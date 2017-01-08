@@ -1,0 +1,35 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id="home-page">
+    <template>
+        <style>
+             #welcome-section {
+                align-items: center;
+                @apply(--layout-horizontal);
+                background: var(--primary-color);
+                width: 100%;
+                
+            }
+            #welcome-section > #welcome-message {
+                /*@apply(--layout-self-center);*/
+                color: var(--accent-color);
+                font-size: 65px;
+                margin: 0 auto;
+                text-align: center;
+            }
+        </style>
+        <!--<section class="flex layout horizontal center-justified" id="welcome-section">-->
+        <section class="flex layout horizontal" id="welcome-section">
+            <span id="welcome-message">
+                Welcome!<br>
+                This site is currently under renovation.<br>
+                Please come back later.
+            </span>
+        </section>
+    </template>
+    <script>
+        Polymer({
+            is: 'home-page'
+        });
+    </script>
+</dom-module>

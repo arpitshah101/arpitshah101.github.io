@@ -1,0 +1,110 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="/bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<!-- import classes in an element -->
+<style include="iron-flex iron-flex-alignment"></style>
+
+
+<link rel="import" href="/website-theme.html">
+
+<link rel="import" href="home-page.html">
+
+<dom-module id="as-website">
+    <template>
+        <style is="custom-style">
+            nav#nav-tabs {
+                float: right;
+            }
+            paper-header-panel {
+                --paper-header-panel-body: {
+                    display: block;
+                }
+            }
+            paper-toolbar {
+                --paper-toolbar-background: var(--primary-color);
+                --paper-toolbar-color: #fff;
+            }
+
+            paper-tabs {
+                --paper-tabs-selection-bar-color: var(--accent-color);
+            }
+
+            paper-tab {
+                --paper-tab-ink: var(--accent-color);
+            }
+
+            paper-header-panel {
+                --paper-header-panel-container: {
+                    min-height: 100%;
+                    @apply(--layout-flex);
+                    @apply(--layout-horizontal);
+                }
+            }
+
+            #pages, #pages > * {
+                width: 100%;
+                @apply(--layout-horizontal);
+            }
+
+            #home-view > #welcome-section {
+                @apply(--layout-horizontal);
+                background: var(--primary-color);
+                width: 100%;
+            }
+
+            iron-pages#pages {
+                @apply(--layout-flex);
+                @apply(--layout-horizontal);
+                @apply(--layout-self-stretch);
+            }
+        </style>
+
+        <paper-header-panel mode="{{headerMode}}" class="flex layout horizontal">
+            <paper-toolbar>
+                <div class="title"></div>
+                <paper-tabs selected="{{selected}}" id="nav-tabs">
+                    <paper-tab>Home</paper-tab>
+                    <!--<paper-tab>Resume</paper-tab>
+                    <paper-tab>Projects</paper-tab>-->
+                </paper-tabs>
+            </paper-toolbar>
+            <!-- Page content -->
+            <iron-pages selected="{{selected}}" on-iron-select="checkMode" id="pages" class="flex">
+                <home-page></home-page>
+                <!--<div class="flex">Resume</div>
+                <div class="flex">Projects</div>-->
+            </iron-pages>
+        </paper-header-panel>
+    </template>
+    <script>
+        Polymer({
+            is: 'as-website',
+            properties: {
+                selected: {
+                    type: String,
+                    value: 0
+                },
+                headerMode: {
+                    type: String,
+                    value: "waterfall"
+                }
+            },
+            checkMode: function() {
+                if (this.selected == 0) {
+                    this.headerMode = "waterfall";
+                }
+                else {
+                    this.headerMode = "standard";
+                }
+            }
+        });
+    </script>
+
+</dom-module>

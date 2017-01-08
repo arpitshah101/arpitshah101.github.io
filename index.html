@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arpit Shah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="/src/as-website.html">
+    <link rel="import" href="/website-theme.html">
+
+
+    <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+    <!-- import classes in an element -->
+    <style is="custom-style" include="iron-flex iron-flex-reverse iron-flex-alignment iron-flex-factors iron-positioning" />
+
+    <style is="custom-style">
+        body {
+            background-color: var(--paper-grey-50);
+        }
+    </style>
+</head>
+
+<body class="fullbleed layout vertical">
+    <!--<div class="layout horizontal">
+        <div class="flex">One</div>
+        <div class="flex">Two</div>
+        <div class="flex">Three</div>
+    </div>-->
+    <as-website class="flex" unresolved></as-website>
+</body>
+
+</html>
